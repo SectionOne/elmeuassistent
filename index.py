@@ -1,6 +1,21 @@
 import speech_recognition as sr
 import json
+import pyttsx3
 
+engine = pyttsx3.init('sapi5')
+
+# Set Rate
+engine.setProperty('rate', 120)
+
+# Set Languatge
+engine.setProperty('voice', 'spanish')
+
+# Set Volume
+engine.setProperty('volume', 1.0)
+
+engine.say("Hola buenos dias. En que te puedo ayudar?")
+engine.runAndWait()
+    
 def listen():
     rec = sr.Recognizer()
     with sr.Microphone() as src:
@@ -15,7 +30,7 @@ def listen():
 
 def listenToText():
     c = listen()
-    print("Valor escoltat=",c)
+    #print("Valor escoltat=",c)
     d = json.loads(c)
     return str(d["text"])
 
