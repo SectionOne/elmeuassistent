@@ -2,6 +2,10 @@ import speech_recognition as sr
 import json
 import pyttsx3
 
+inactivity = 0
+greet = False
+dialog = False
+
 engine = pyttsx3.init('sapi5')
 
 # Set Rate
@@ -35,6 +39,11 @@ def listenToText():
     d = json.loads(c)
     return str(d["text"])
 
-speak("Hola buenos dias. En que te puedo ayudar?")
-print(listenToText())
-print("Hola Classe que tal?")
+while True:
+    #Control de si s'ha iniciat conversació o no
+    if dialog:
+        speak("Hola buenos dias. En que te puedo ayudar?")
+        print(listenToText())
+        print("Fi del cicle")
+    else:
+        print("In StandBy")
