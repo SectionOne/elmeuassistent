@@ -13,8 +13,9 @@ engine.setProperty('voice', 'spanish')
 # Set Volume
 engine.setProperty('volume', 1.0)
 
-engine.say("Hola buenos dias. En que te puedo ayudar?")
-engine.runAndWait()
+def speak(text):
+    engine.say(text)
+    engine.runAndWait()
     
 def listen():
     rec = sr.Recognizer()
@@ -34,5 +35,6 @@ def listenToText():
     d = json.loads(c)
     return str(d["text"])
 
+speak("Hola buenos dias. En que te puedo ayudar?")
 print(listenToText())
 print("Hola Classe que tal?")
