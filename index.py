@@ -39,6 +39,21 @@ def listenToText():
     d = json.loads(c)
     return str(d["text"])
 
+#Funció per observar si un string es troba a una llista
+def isContain(textInput,seeds):
+    response = False
+    for seed in seeds:
+        if textInput.find(seed) > -1: 
+            response = True 
+    return response
+
+#Sequencia d'entrada en conversació
+def inDialog():
+    global dialog
+    stringInput = listenToText()
+    if isContain(stringInput,["hola laura","ajudem laura","laura"]):
+        dialog = True
+        
 while True:
     #Control de si s'ha iniciat conversació o no
     if dialog:
@@ -47,3 +62,4 @@ while True:
         print("Fi del cicle")
     else:
         print("In StandBy")
+        inDialog()
