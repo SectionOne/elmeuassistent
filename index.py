@@ -82,6 +82,10 @@ def inDialog():
     if isContain(stringInput,["hola " + BOTNAME,"ajudem " + BOTNAME,BOTNAME]):
         dialog = True
         
+def outDialog():
+    speak("Encantada de haberte ayudado")
+    byeBye()
+        
 while True:
     #Control de si s'ha iniciat conversació o no
     if dialog:
@@ -95,8 +99,10 @@ while True:
         else:
             #Proces de despedida per inactivitat
             if(inactivity < inactivityMax):
+                speak("No te he entendido bien. Puedes repetirlo porfavor?")
                 inactivity += 1
             else:
+                outDialog()
                 inactivity = 0
         print("Fi del cicle", inactivity) #Concatenem amb una , ja que unim elements de diferents tipus
     else:
