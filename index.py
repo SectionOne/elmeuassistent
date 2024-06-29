@@ -75,7 +75,12 @@ while True:
     if dialog:
         #Validació de la salutació
         if inactivity == 0 and greet == False : greet_user()
-        print(listenToText())
+        stringInput = listenToText()
+        
+        if isContain(stringInput,['adiós', 'adeu', 'ves a dormir', 'finaliza', 'finalitza', 'quit', 'terminate', 'kill', 'end']):
+            print("Fi de la conversació")
+            continue #Situarem continue per tornar a la següent repetició del cicle
+              
         print("Fi del cicle")
     else:
         print("In StandBy")
