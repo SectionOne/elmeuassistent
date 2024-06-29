@@ -8,6 +8,7 @@ BOTNAME = "laura"
 inactivity = 0
 greet = False
 dialog = False
+inactivityMax = 2 #Modifica aquest valor per canviar la durada de la conversació
 
 engine = pyttsx3.init('sapi5')
 
@@ -93,8 +94,11 @@ while True:
             continue #Situarem continue per tornar a la següent repetició del cicle
         else:
             #Proces de despedida per inactivitat
-            inactivity += 1   
-        print("Fi del cicle")
+            if(inactivity < inactivityMax):
+                inactivity += 1
+            else:
+                inactivity = 0
+        print("Fi del cicle", inactivity) #Concatenem amb una , ja que unim elements de diferents tipus
     else:
         print("In StandBy")
         inDialog()
