@@ -83,8 +83,15 @@ def inDialog():
         dialog = True
         
 def outDialog():
-    speak("Encantada de haberte ayudado")
-    byeBye()
+    global dialog
+    speak("Deseas que te ayude en algo mas?")
+    stringInput = listenToText()
+    if isContain(stringInput,["si","sí","deseo"]):
+        speak("En que puedo ayudarte mas?")
+        dialog = True #Assegurarem que dialog estigui en true
+    else:
+        speak("Encantada de haberte ayudado")
+        byeBye()
         
 while True:
     #Control de si s'ha iniciat conversació o no
