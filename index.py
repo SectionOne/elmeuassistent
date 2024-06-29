@@ -57,7 +57,6 @@ def byeBye():
         speak("Buenas noches, cuidate mucho!")
     else:
         speak('Que tengas un buen dia!')
-        print(hour)
     dialog = False
     greet = False
 
@@ -92,26 +91,29 @@ def outDialog():
     else:
         speak("Encantada de haberte ayudado")
         byeBye()
-        
-while True:
-    #Control de si s'ha iniciat conversació o no
-    if dialog:
-        #Validació de la salutació
-        if inactivity == 0 and greet == False : greet_user()
-        stringInput = listenToText()
-        
-        if isContain(stringInput,['adiós', 'adeu', 'ves a dormir', 'finaliza', 'finalitza', 'quit', 'terminate', 'kill', 'end']):
-            byeBye()
-            continue #Situarem continue per tornar a la següent repetició del cicle
-        else:
-            #Proces de despedida per inactivitat
-            if(inactivity < inactivityMax):
-                speak("No te he entendido bien. Puedes repetirlo porfavor?")
-                inactivity += 1
+
+try:        
+    while True:
+        #Control de si s'ha iniciat conversació o no
+        if dialog:
+            #Validació de la salutació
+            if inactivity == 0 and greet == False : greet_user()
+            stringInput = listenToText()
+            
+            if isContain(stringInput,['adiós', 'adeu', 'ves a dormir', 'finaliza', 'finalitza', 'quit', 'terminate', 'kill', 'end']):
+                byeBye()
+                continue #Situarem continue per tornar a la següent repetició del cicle
             else:
-                outDialog()
-                inactivity = 0
-        print("Fi del cicle", inactivity) #Concatenem amb una , ja que unim elements de diferents tipus
-    else:
-        print("In StandBy")
-        inDialog()
+                #Proces de despedida per inactivitat
+                if(inactivity < inactivityMax):
+                    speak("No te he entendido bien. Puedes repetirlo porfavor?")
+                    inactivity += 1
+                else:
+                    outDialog()
+                    inactivity = 0
+            print("Fi del cicle", inactivity) #Concatenem amb una , ja que unim elements de diferents tipus
+        else:
+            print("In StandBy")
+            inDialog()
+except KeyboardInterrupt:
+    byeBye()
