@@ -91,7 +91,9 @@ while True:
         if isContain(stringInput,['adiós', 'adeu', 'ves a dormir', 'finaliza', 'finalitza', 'quit', 'terminate', 'kill', 'end']):
             byeBye()
             continue #Situarem continue per tornar a la següent repetició del cicle
-              
+        else:
+            #Proces de despedida per inactivitat
+            inactivity += 1   
         print("Fi del cicle")
     else:
         print("In StandBy")
