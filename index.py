@@ -92,6 +92,13 @@ def outDialog():
         speak("Encantada de haberte ayudado")
         byeBye()
 
+def actions(stringInput):
+    if isContain(stringInput,["proba","test","evaluacio"]):
+        speak('Abra cadabra patita de cabra')
+        outDialog()
+    else:
+        speak("No te he entendido bien. Puedes repetirlo porfavor?")
+
 try:        
     while True:
         #Control de si s'ha iniciat conversació o no
@@ -108,6 +115,9 @@ try:
                 if(inactivity < inactivityMax):
                     speak("No te he entendido bien. Puedes repetirlo porfavor?")
                     inactivity += 1
+                elif stringInput != "":
+                    speak("En breve gestiono tu petición")
+                    actions(stringInput)
                 else:
                     outDialog()
                     inactivity = 0
