@@ -3,6 +3,7 @@ import json
 import pyttsx3
 from datetime import datetime
 from functions.os_ops import open_calculator, open_discord, open_vscode
+from functions.online_ops import search_on_google
 
 USERNAME = "Usuario"
 BOTNAME = "laura"
@@ -103,6 +104,10 @@ def actions(stringInput):
         open_discord()
     elif isContain(stringInput,["visual estudio","visual","estudio","vs code","vs"]):
         open_vscode()
+    elif isContain(stringInput,["buscar","google","busca","cerca","cercar"]):
+        speak("Que quieres que busque en google?")
+        query = listenToText()
+        search_on_google(query)
     else:
         speak("No te he entendido bien. Puedes repetirlo porfavor?")
 
