@@ -2,6 +2,7 @@ import speech_recognition as sr
 import json
 import pyttsx3
 from datetime import datetime
+from functions.os_ops import open_calculator
 
 USERNAME = "Usuario"
 BOTNAME = "laura"
@@ -96,6 +97,8 @@ def actions(stringInput):
     if isContain(stringInput,["proba","test","evaluacio"]):
         speak('Abra cadabra patita de cabra')
         outDialog()
+    elif isContain(stringInput,["calculadora","calcul","calcular"]):
+        open_calculator()
     else:
         speak("No te he entendido bien. Puedes repetirlo porfavor?")
 
