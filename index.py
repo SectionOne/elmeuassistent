@@ -49,6 +49,17 @@ def greet_user():
     speak(f"Mi nombre es {BOTNAME}. Como puedo ayudarte?")
     greet = True
 
+def byeBye():
+    global greet,dialog
+    hour = datetime.now().hour
+    if hour >= 21 or hour < 6:
+        speak("Buenas noches, cuidate mucho!")
+    else:
+        speak('Que tengas un buen dia!')
+        print(hour)
+    dialog = False
+    greet = False
+
 def listenToText():
     c = listen()
     #print("Valor escoltat=",c)
@@ -78,7 +89,7 @@ while True:
         stringInput = listenToText()
         
         if isContain(stringInput,['adiós', 'adeu', 'ves a dormir', 'finaliza', 'finalitza', 'quit', 'terminate', 'kill', 'end']):
-            print("Fi de la conversació")
+            byeBye()
             continue #Situarem continue per tornar a la següent repetició del cicle
               
         print("Fi del cicle")
