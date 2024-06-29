@@ -2,7 +2,7 @@ import speech_recognition as sr
 import json
 import pyttsx3
 from datetime import datetime
-from functions.os_ops import open_calculator
+from functions.os_ops import open_calculator, open_discord
 
 USERNAME = "Usuario"
 BOTNAME = "laura"
@@ -99,6 +99,8 @@ def actions(stringInput):
         outDialog()
     elif isContain(stringInput,["calculadora","calcul","calcular"]):
         open_calculator()
+    elif isContain(stringInput,["discord","disc hort","disc","disc cort"]):
+        open_discord()
     else:
         speak("No te he entendido bien. Puedes repetirlo porfavor?")
 
@@ -109,7 +111,7 @@ try:
             #Validació de la salutació
             if inactivity == 0 and greet == False : greet_user()
             stringInput = listenToText()
-            
+            print(stringInput)
             if isContain(stringInput,['adiós', 'adeu', 'ves a dormir', 'finaliza', 'finalitza', 'quit', 'terminate', 'kill', 'end']):
                 byeBye()
                 continue #Situarem continue per tornar a la següent repetició del cicle
