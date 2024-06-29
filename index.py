@@ -1,7 +1,10 @@
 import speech_recognition as sr
 import json
 import pyttsx3
+from datetime import datetime
 
+USERNAME = "Usuario"
+BOTNAME = "laura"
 inactivity = 0
 greet = False
 dialog = False
@@ -33,6 +36,19 @@ def listen():
         cmd = input()
     return cmd
 
+def greet_user():
+    """Greets the user according to the time"""
+    global greet
+    hour = datetime.now().hour
+    if (hour >= 6) and (hour < 12):
+        speak(f"Buenos dias {USERNAME}")
+    elif (hour >= 12) and (hour < 19):
+        speak(f"Buenas tardes {USERNAME}")
+    elif (hour >= 19) or (hour <= 23):
+        speak(f"Buenas noches {USERNAME}")
+    speak(f"Mi nombre es {BOTNAME}. Como puedo ayudarte?")
+    greet = True
+
 def listenToText():
     c = listen()
     #print("Valor escoltat=",c)
@@ -51,13 +67,14 @@ def isContain(textInput,seeds):
 def inDialog():
     global dialog
     stringInput = listenToText()
-    if isContain(stringInput,["hola laura","ajudem laura","laura"]):
+    if isContain(stringInput,["hola " + BOTNAME,"ajudem " + BOTNAME,BOTNAME]):
         dialog = True
         
 while True:
     #Control de si s'ha iniciat conversació o no
     if dialog:
-        speak("Hola buenos dias. En que te puedo ayudar?")
+        #Validació de la salutació
+        if inactivity == 0 and greet == False : greet_user()
         print(listenToText())
         print("Fi del cicle")
     else:
