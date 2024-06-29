@@ -3,7 +3,7 @@ import json
 import pyttsx3
 from datetime import datetime
 from functions.os_ops import open_calculator, open_discord, open_vscode
-from functions.online_ops import search_on_google
+from functions.online_ops import search_on_google, play_on_youtube
 
 USERNAME = "Usuario"
 BOTNAME = "laura"
@@ -108,6 +108,10 @@ def actions(stringInput):
         speak("Que quieres que busque en google?")
         query = listenToText()
         search_on_google(query)
+    elif isContain(stringInput,["youtube","you","tub","youtub"]):
+        speak("Que quieres que busque en youtube?")
+        query = listenToText()
+        play_on_youtube(query)
     else:
         speak("No te he entendido bien. Puedes repetirlo porfavor?")
 
