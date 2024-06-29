@@ -2,7 +2,7 @@ import speech_recognition as sr
 import json
 import pyttsx3
 from datetime import datetime
-from functions.os_ops import open_calculator, open_discord
+from functions.os_ops import open_calculator, open_discord, open_vscode
 
 USERNAME = "Usuario"
 BOTNAME = "laura"
@@ -101,6 +101,8 @@ def actions(stringInput):
         open_calculator()
     elif isContain(stringInput,["discord","disc hort","disc","disc cort"]):
         open_discord()
+    elif isContain(stringInput,["visual estudio","visual","estudio","vs code","vs"]):
+        open_vscode()
     else:
         speak("No te he entendido bien. Puedes repetirlo porfavor?")
 
