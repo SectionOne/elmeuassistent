@@ -120,10 +120,13 @@ def actions(stringInput):
         send_whatsapp_message(number,text)
     elif isContain(stringInput,["expliquem un acudit","acudit","chiste"]):
         joke = get_random_joke()
-        speak(f"Perfecto te cuento uno ")
-        speak(joke["joke"] + "         " + joke["answer"])
-        print(joke["joke"])
-        speak("Ja ja ja")
+        if joke["error"] == "":
+            speak(f"Perfecto te cuento uno ")
+            speak(joke["joke"] + "         " + joke["answer"])
+            print(joke["joke"])
+            speak("Ja ja ja")
+        else:
+            speak(joke["error"])
     else:
         speak("No te he entendido bien. Puedes repetirlo porfavor?")
 
