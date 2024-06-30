@@ -3,7 +3,7 @@ import json
 import pyttsx3
 from datetime import datetime
 from functions.os_ops import open_calculator, open_discord, open_vscode
-from functions.online_ops import search_on_google, play_on_youtube
+from functions.online_ops import search_on_google, play_on_youtube, send_whatsapp_message
 
 USERNAME = "Usuario"
 BOTNAME = "laura"
@@ -112,6 +112,12 @@ def actions(stringInput):
         speak("Que quieres que busque en youtube?")
         query = listenToText()
         play_on_youtube(query)
+    elif isContain(stringInput,["whatsapp","missatge","enviar"]):
+        speak("Que texto quieres enviar por whatsapp?")
+        text = listenToText()
+        speak("A que numero quieres enviar?")
+        number = listenToText()
+        send_whatsapp_message(number,text)
     else:
         speak("No te he entendido bien. Puedes repetirlo porfavor?")
 
