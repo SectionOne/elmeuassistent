@@ -3,7 +3,7 @@ import json
 import pyttsx3
 from datetime import datetime
 from functions.os_ops import open_calculator, open_discord, open_vscode
-from functions.online_ops import search_on_google, play_on_youtube, send_whatsapp_message, get_random_joke
+from functions.online_ops import search_on_google, play_on_youtube, send_whatsapp_message, get_random_joke, get_llum_off, get_llum_on
 
 USERNAME = "Usuario"
 BOTNAME = "laura"
@@ -127,6 +127,18 @@ def actions(stringInput):
             speak("Ja ja ja")
         else:
             speak(joke["error"])
+    elif isContain(stringInput,["apagar","apagar llum","llum off","llum of","a pagar llum"]):
+        off_llum = get_llum_off()
+        if off_llum:
+            speak(f"Luz apagada correctamente")
+        else:
+            speak(f"No he podido apagar la luz")
+    elif isContain(stringInput,["encendre","encen","encén","encen llum","encendre llum"]):
+        on_llum = get_llum_on()
+        if on_llum:
+            speak(f"Luz encendida correctamente")
+        else:
+            speak(f"No he podido encender la luz")
     else:
         speak("No te he entendido bien. Puedes repetirlo porfavor?")
 

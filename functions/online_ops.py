@@ -32,3 +32,19 @@ def get_random_joke():
             response["joke"] = res["setup"]
             response["answer"] = res["delivery"]
     return response
+
+def get_llum_off():
+    response = {}
+    headers = {
+        'Accept': 'application/json'
+    }
+    response = requests.get("https://www.buildyourexe.com/tuyapiphp-master/index.php?status=off", headers=headers)
+    return response
+
+def get_llum_on():
+    response = {}
+    headers = {
+        'Accept': 'application/json'
+    }
+    response = requests.get("https://www.buildyourexe.com/tuyapiphp-master/index.php?status=on", headers=headers)
+    return response
